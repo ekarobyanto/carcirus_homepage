@@ -141,10 +141,43 @@ flutter build apk --release
 flutter build ios --release
 ```
 
+## 🚀 CI/CD Pipeline
+
+This project includes a GitHub Actions workflow for automated builds and releases.
+
+### Creating a Release
+
+1. **Update version in `pubspec.yaml`**
+
+   ```yaml
+   version: 1.0.0+1
+   ```
+2. **Create and push a version tag**
+
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+3. **Automated build process**
+
+   - GitHub Actions automatically builds the APK
+   - Creates a GitHub release
+   - Uploads APK to the release
+
+### Manual Trigger
+
+You can also manually trigger the build workflow from the GitHub Actions tab.
+
+### Artifacts
+
+Built APKs are available as artifacts for 30 days after each workflow run.
+
 ## 🎯 Key Components
 
 ### State Management with Riverpod
+
 Global booking state managed through Riverpod provider:
+
 ```dart
 // Reading the current booking
 final currentBooking = ref.watch(bookingProvider);
